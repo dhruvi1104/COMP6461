@@ -1,19 +1,10 @@
-import java.net.Socket;
-import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-import java.net.*;
-import java.io.*;
 
 public class httpcRead {
 	
-	public static void main(String[] args) throws UnknownHostException, IOException {
-		Socket s = new Socket("localhost",4999);
-		PrintWriter pr = new PrintWriter(s.getOutputStream());
-		
-		InputStreamReader in = new InputStreamReader(s.getInputStream());
-		BufferedReader br = new BufferedReader(in);
+	public static void main(String[] args){
 		
 		Scanner a = new Scanner(System.in);
 		while(true) {
@@ -38,12 +29,6 @@ public class httpcRead {
 								if(j < noOfKwords) {
 									if(kwords[j].compareTo("get") == 0 && noOfKwords == 3) {
 										System.out.println("httpc help get");
-										msg = "help get";
-										pr.println(msg);
-										pr.flush();
-										
-										String rply = br.readLine();
-										System.out.println("Server : "+rply);
 										flag=1;
 										break;
 									}else if(kwords[j].compareTo("post") == 0 && noOfKwords == 3) {
